@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.xm.bus">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:name=".common.MyApplication"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="BaiduMobAd_APP_ID"
+            android:value="c034420e" />
+        <meta-data
+            android:name="BaiduMobAd_APP_SEC"
+            android:value="c034420e" />
+
+        <activity
+            android:name="com.baidu.mobads.AppActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation" />
+        -
+        <activity
+            android:name="com.xm.bus.MainDrawerActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light"
+            android:windowSoftInputMode="stateVisible|adjustPan|stateHidden"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.xm.bus.MainActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="com.xm.bus.search.line.SelectLineActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="com.xm.bus.search.line.StopInLineActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.common.ArrivalActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.stop.RelationStopActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.stop.RelationLineActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.change.SourceStopActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.change.DestinationStopActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.change.PlansLineActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.change.PlanDetailActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.location.ui.LocationMap"
+                  android:screenOrientation="portrait"
+            />
+        <activity android:name="com.xm.bus.common.ui.GuidePager"
+                  android:screenOrientation="portrait"
+            />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <receiver android:name="com.xm.bus.search.common.RemindWidget"
+            >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                       android:resource="@xml/widget_provider"
+                />
+        </receiver>
+        <service android:name="com.xm.bus.common.service.UpdateWidgetServie"/>
+    </application>
+
+</manifest>
