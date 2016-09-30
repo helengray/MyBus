@@ -36,6 +36,7 @@
         <activity
             android:name="com.xm.bus.MainDrawerActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:theme="@android:style/Theme.Light"
             android:windowSoftInputMode="stateVisible|adjustPan|stateHidden"
             >

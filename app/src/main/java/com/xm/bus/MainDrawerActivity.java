@@ -20,6 +20,7 @@ import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.widget.DrawerLayout;
+import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RemoteViews;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.xm.bus.common.Constant;
@@ -140,6 +142,14 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		mTabHost.addTab(mTabHost.newTabSpec("定位").setIndicator("定位",getResources().getDrawable(R.drawable.tabs_location)),
 				LocationActivity.class,
 				null);
+		mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+			@Override
+			public void onTabChanged(String tabId) {
+				TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+				String imei = tm.getDeviceId();
+				System.out.println("imei = "+imei);
+			}
+		});
 		startTimer();
 	}
 	private Handler mHandler = new Handler();
